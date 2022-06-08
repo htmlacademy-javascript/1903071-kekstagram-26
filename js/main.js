@@ -8,11 +8,15 @@ const randomNumber = function (min, max) {
 randomNumber();
 
 
+// Написал сам
+
 const checkCommentLength = function (line, maxLength) {
   if (line <= maxLength) {
     line = true;
-    return checkCommentLength;
+  } else {
+    line = false;
   }
+  return line;
 };
 
 checkCommentLength();
