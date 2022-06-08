@@ -11,12 +11,11 @@ randomNumber();
 // Написал сам
 
 const checkCommentLength = function (line, maxLength) {
-  if (line <= maxLength) {
-    line = true;
+  if (line.length <= maxLength) {
+    return true;
   } else {
-    line = false;
+    return false;
   }
-  return line;
 };
 
 checkCommentLength();
