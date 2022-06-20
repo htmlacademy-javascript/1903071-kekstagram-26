@@ -46,7 +46,7 @@ const createPhotoDescription = () => ({
   comments: randomComments
 });
 
-const photosDescriptions = Array.from({length: photosDescriptionsCount}, createPhotoDescription);
+Array.from({length: photosDescriptionsCount}, createPhotoDescription);
 
 
 // Написал сам
