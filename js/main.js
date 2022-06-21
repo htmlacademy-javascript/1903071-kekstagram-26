@@ -17,37 +17,68 @@ const namesInComments = [
   'Адольф'
 ];
 
+const descriptions = [
+  'Это мы на луне',
+  'А тут мы в прекрасной России будущего',
+  'Съездили на выходных в Антарктиду, покормили пингвинов',
+  'Первый раз в жизни увидел ежа',
+  'Это мой котя',
+  'С днем рождения меня',
+  'Фото номер 6',
+  'Фото номер 7',
+  'Всех с первомаем!',
+];
 
 const photosDescriptionsCount = 25;
+const randomCommentsCount = 3;
+const randomMessagesCount = 2;
 
 const getRandomNumber = function (min, max) {
   const random = min - 0.5 + Math.random() * (max - min + 1);
   return Math.round(random);
 };
 
-const getRandomArrayElement = (elements) =>
-  elements[getRandomNumber(0, elements.length - 1)];
+const getRandomArrayElement = function(elements) {
+  return elements[getRandomNumber(0, elements.length - 1)];
+};
+
+const createMessage = function () {
+  const randomMessages = [];
+  for (let i = 0; i < randomMessagesCount; i++) {
+    randomMessages.push(messagesInComments[getRandomNumber(0, messagesInComments.length - 1)]);
+  }
+  return randomMessages;
+};
 
 const createComments = () => ({
   id: getRandomNumber(1, 999),
   avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
-  message: getRandomArrayElement(messagesInComments),
+  message: createMessage(),
   name: getRandomArrayElement(namesInComments)
 });
 
-const randomComments = Array.from({length: 2}, createComments);
+const createRandomComments = function () {
+  const randomComments = [];
+  for (let i = 1; i <= randomCommentsCount; i++) {
+    randomComments.push(createComments());
+  }
+  return randomComments;
+};
 
-
-const createPhotoDescription = () => ({
-  id: getRandomNumber(1, 25),
-  url: `photos/${getRandomNumber(1, 25)}.jpg`,
-  description: 'Описание фотографии',
-  likes: getRandomNumber(15, 200),
-  comments: randomComments
-});
-
-Array.from({length: photosDescriptionsCount}, createPhotoDescription);
-
+const createPhotoDescription = () => {
+  const photoDescriptions = [];
+  for (let i = 1; i <= photosDescriptionsCount; i++) {
+    photoDescriptions.push({
+      id: i,
+      url: `photos/${i}.jpg`,
+      description: getRandomArrayElement(descriptions),
+      likes: getRandomNumber(15, 200),
+      comments: createRandomComments()
+    });
+  }
+  return photoDescriptions;
+};
+createPhotoDescription();
 
 // Написал сам
 
