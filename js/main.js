@@ -30,8 +30,7 @@ const descriptions = [
 ];
 
 const photosDescriptionsCount = 25;
-const randomCommentsCount = 3;
-const randomMessagesCount = 2;
+
 
 const getRandomNumber = function (min, max) {
   const random = min - 0.5 + Math.random() * (max - min + 1);
@@ -44,7 +43,7 @@ const getRandomArrayElement = function(elements) {
 
 const createMessage = function () {
   const randomMessages = [];
-  for (let i = 0; i < randomMessagesCount; i++) {
+  for (let i = 0; i < getRandomNumber(1, 2); i++) {
     randomMessages.push(messagesInComments[getRandomNumber(0, messagesInComments.length - 1)]);
   }
   return randomMessages;
@@ -59,7 +58,7 @@ const createComments = () => ({
 
 const createRandomComments = function () {
   const randomComments = [];
-  for (let i = 1; i <= randomCommentsCount; i++) {
+  for (let i = 1; i <= getRandomNumber(1, 6); i++) {
     randomComments.push(createComments());
   }
   return randomComments;
@@ -82,12 +81,12 @@ createPhotoDescription();
 
 // Написал сам
 
-const checkCommentLength = function (line, maxLength) {
+/*const checkCommentLength = function (line, maxLength) {
   if (line.length <= maxLength) {
     return true;
   } else {
     return false;
   }
 };
-checkCommentLength('asdsad', 5);
+checkCommentLength('asdsad', 5);*/
 
