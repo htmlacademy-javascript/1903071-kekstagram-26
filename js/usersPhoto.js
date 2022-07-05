@@ -2,10 +2,18 @@ import {createPhotoDescription} from './data.js';
 import {showBigPicture} from './bigPhoto.js';
 
 
-const pictures = document.querySelector('.pictures');
+const picturesElements = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 const pictureItems = createPhotoDescription();
 const picturesFragment = document.createDocumentFragment();
+
+/*pictures.addEventListener('click', (evt) => {
+  console.log(evt.target.nodeName);
+  if (evt.target.nodeName === 'IMG') {
+    console.log('тест');
+    //showBigPicture();
+  }
+});*/
 
 pictureItems.forEach(({url, likes, comments}) => {
   const pictureItem = pictureTemplate.cloneNode(true);
@@ -19,4 +27,5 @@ pictureItems.forEach(({url, likes, comments}) => {
   });
 });
 
-pictures.append(picturesFragment);
+picturesElements.append(picturesFragment);
+
