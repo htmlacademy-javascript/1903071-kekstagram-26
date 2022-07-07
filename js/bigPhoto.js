@@ -1,3 +1,5 @@
+import {isEscapeKey} from './util.js';
+
 const bigPictureElement = document.querySelector('.big-picture');
 const bigPicturePhotoElement = document.querySelector('.big-picture__img img');
 const likesCountElement = document.querySelector('.likes-count');
@@ -10,6 +12,13 @@ const commentsContainerElement = document.querySelector('.social__comments');
 const commentsListItemElement = document.querySelector('.social__comment');
 
 
+const onBigPictureEscKeydown = (evt) => {
+  if (isEscapeKey(evt)) {
+    bigPictureElement.classList.add('hidden');
+    body.classList.remove('modal-open');
+  }
+};
+
 const bigPictureOpen = function () {
   bigPictureElement.classList.remove('hidden');
   body.classList.add('modal-open');
@@ -18,6 +27,8 @@ const bigPictureOpen = function () {
 const bigPictureClose  = function () {
   bigPictureElement.classList.add('hidden');
   body.classList.remove('modal-open');
+
+  document.removeEventListener('keydown', onBigPictureEscKeydown);
 };
 
 
@@ -42,11 +53,7 @@ const showBigPicture = function (photo) {
 
   buttonCloseElement.addEventListener('click', bigPictureClose);
 
-  document.addEventListener('keydown', (evt) => {
-    if (evt.key === 'Escape') {
-      bigPictureClose();
-    }
-  });
+  document.addEventListener('keydown', onBigPictureEscKeydown);
 
   commentCountElement.classList.add('hidden');
   commentsLoaderElement.classList.add('hidden');

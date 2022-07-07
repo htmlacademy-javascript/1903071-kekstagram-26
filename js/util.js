@@ -9,14 +9,18 @@ const getRandomArrayElement = function(elements) {
 };
 
 
-/*const checkCommentLength = function (line, maxLength) {
+const checkCommentLength = function (line, maxLength) {
   if (line.length <= maxLength) {
     return true;
   } else {
     return false;
   }
 };
-checkCommentLength();*/
 
 
-export {getRandomNumber, getRandomArrayElement};
+function isEscapeKey(evt) {
+  return evt.key === 'Escape';
+}
+
+
+export {getRandomNumber, getRandomArrayElement, isEscapeKey, checkCommentLength};
