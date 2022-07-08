@@ -1,4 +1,5 @@
 import {isEscapeKey} from './util.js';
+import {inputHashtagElement, commentElement} from './validationForm.js';
 
 //const formElement = document.querySelector('.img-upload__form');
 const uploadFileInputElement = document.querySelector('#upload-file');
@@ -9,6 +10,9 @@ const buttonClose = document.querySelector('#upload-cancel');
 
 const onImgUploadOverlayEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
+    if (inputHashtagElement === document.activeElement || commentElement === document.activeElement) {
+      return;
+    }
     imgUploadOverlayElement.classList.add('hidden');
     body.classList.remove('modal-open');
   }

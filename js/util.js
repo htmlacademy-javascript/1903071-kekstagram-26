@@ -9,13 +9,7 @@ const getRandomArrayElement = function(elements) {
 };
 
 
-const checkCommentLength = function (line, maxLength) {
-  if (line.length <= maxLength) {
-    return true;
-  } else {
-    return false;
-  }
-};
+const checkCommentLength = (line, maxLength) => line.length <= maxLength;
 
 
 function isEscapeKey(evt) {
