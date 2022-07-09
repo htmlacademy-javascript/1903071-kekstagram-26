@@ -3,8 +3,8 @@ import {isEscapeKey} from './util.js';
 const bigPictureElement = document.querySelector('.big-picture');
 const bigPicturePhotoElement = document.querySelector('.big-picture__img img');
 const likesCountElement = document.querySelector('.likes-count');
-const commentCountElement = document.querySelector('.social__comment-count');
-const commentsLoaderElement = document.querySelector('.comments-loader');
+const commentCountElement = document.querySelector('.social__comment-count span');
+//const commentsLoaderElement = document.querySelector('.comments-loader');
 const body = document.querySelector('body');
 const buttonCloseElement = document.querySelector('.big-picture__cancel');
 const socialCaptionElement = document.querySelector('.social__caption');
@@ -54,9 +54,6 @@ const showBigPicture = function (photo) {
   buttonCloseElement.addEventListener('click', bigPictureClose);
 
   document.addEventListener('keydown', onBigPictureEscKeydown);
-
-  commentCountElement.classList.add('hidden');
-  commentsLoaderElement.classList.add('hidden');
 };
 
 export {showBigPicture};
