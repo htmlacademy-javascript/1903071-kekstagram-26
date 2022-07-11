@@ -33,7 +33,7 @@ const bigPictureClose  = function () {
   //document.removeEventListener('click', generateComments);
 };
 
-const generateComment = (comment) => {
+const renderComment = (comment) => {
   const commentsListItemTemplate = commentsListItemElement.cloneNode(true);
   const img = commentsListItemTemplate.querySelector('img');
 
@@ -54,17 +54,11 @@ const showBigPicture = function (photo) {
   const comments = photo.comments;
   let start = 0;
   let end = 5;
-  comments.slice(start, end).forEach(generateComment);
+  comments.slice(start, end).forEach(renderComment);
 
   commentsLoaderElement.classList.add('hidden');
-  if (comments.length === 1) {
-    loadCommentCountElement.textContent = `${comments.length} комментарий`;
-  }
-  if (comments.length === 2 || comments.length === 3 || comments.length === 4) {
-    loadCommentCountElement.textContent = `${comments.length} комментария`;
-  }
-  if (comments.length === 5) {
-    loadCommentCountElement.textContent = `${comments.length} комментариев`;
+  if (comments.length <= 5) {
+    loadCommentCountElement.textContent = `${comments.length  } из ${  comments.length} комментариев`;
   }
 
   if (comments.length > end) {
@@ -72,10 +66,11 @@ const showBigPicture = function (photo) {
   }
 
   function generateComments() {
-    comments.slice(start += 5, end += 5).forEach(generateComment);
+    comments.slice(start += 5, end += 5).forEach(renderComment);
     if (end >= comments.length) {
       commentsLoaderElement.classList.add('hidden');
       end = comments.length;
+      commentsLoaderElement.removeEventListener('click', generateComments);
     }
     loadCommentCountElement.textContent = `${end  } из ${  comments.length} комментариев`;
   }

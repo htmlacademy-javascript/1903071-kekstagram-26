@@ -9,8 +9,8 @@ const picturesFragment = document.createDocumentFragment();
 
 /*picturesElements.addEventListener('click', (evt) => {
   if (evt.target.tagName === 'IMG') {
-    console.log('тест');
-    showBigPicture();
+    console.log(evt.target.id);
+    showBigPicture(evt.target.id);
   }
 });*/
 
