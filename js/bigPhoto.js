@@ -56,12 +56,11 @@ const showBigPicture = function (photo) {
   let end = 5;
   comments.slice(start, end).forEach(renderComment);
 
-  commentsLoaderElement.classList.add('hidden');
   if (comments.length <= 5) {
+    commentsLoaderElement.classList.add('hidden');
     loadCommentCountElement.textContent = `${comments.length  } из ${  comments.length} комментариев`;
-  }
-
-  if (comments.length > end) {
+  } else {
+    loadCommentCountElement.textContent = `${end  } из ${  comments.length} комментариев`;
     commentsLoaderElement.classList.remove('hidden');
   }
 
