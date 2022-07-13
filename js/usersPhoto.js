@@ -7,15 +7,14 @@ const pictureTemplate = document.querySelector('#picture').content.querySelector
 const pictureItems = createPhotoDescription();
 const picturesFragment = document.createDocumentFragment();
 
-/*pictures.addEventListener('click', (evt) => {
-  console.log(evt.target.nodeName);
-  if (evt.target.nodeName === 'IMG') {
-    console.log('тест');
-    //showBigPicture();
+/*picturesElements.addEventListener('click', (evt) => {
+  if (evt.target.tagName === 'IMG') {
+    console.log(evt.target.id);
+    showBigPicture(evt.target.id);
   }
 });*/
 
-pictureItems.forEach(({url, likes, comments}) => {
+pictureItems.forEach(({url, likes, comments, description}) => {
   const pictureItem = pictureTemplate.cloneNode(true);
   pictureItem.querySelector('.picture__img').src = url;
   pictureItem.querySelector('.picture__likes').textContent = likes;
@@ -23,7 +22,7 @@ pictureItems.forEach(({url, likes, comments}) => {
   picturesFragment.append(pictureItem);
 
   pictureItem.addEventListener('click', () => {
-    showBigPicture({url, likes, comments});
+    showBigPicture({url, likes, comments, description});
   });
 });
 

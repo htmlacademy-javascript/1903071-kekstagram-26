@@ -50,7 +50,7 @@ const createComments = () => ({
 
 const createRandomComments = function () {
   const randomComments = [];
-  for (let i = 1; i <= getRandomNumber(1, 6); i++) {
+  for (let i = 1; i <= getRandomNumber(1, 120); i++) {
     randomComments.push(createComments());
   }
   return randomComments;

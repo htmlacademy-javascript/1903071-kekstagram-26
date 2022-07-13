@@ -58,4 +58,4 @@ formElement.addEventListener('submit', (evt) => {
   }
 });
 
-export {inputHashtagElement, commentElement};
+export {inputHashtagElement, commentElement, formElement};
