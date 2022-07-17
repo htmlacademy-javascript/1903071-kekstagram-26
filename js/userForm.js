@@ -1,5 +1,6 @@
 import {isEscapeKey} from './util.js';
 import {inputHashtagElement, commentElement, formElement} from './validationForm.js';
+import {resetEffects} from './effects.js';
 
 const uploadFileInputElement = document.querySelector('#upload-file');
 const imgUploadOverlayElement = document.querySelector('.img-upload__overlay');
@@ -29,6 +30,8 @@ commentElement.addEventListener('keydown', onInputCancelEscKeydown);
 const openImgUploadOverlay = () => {
   imgUploadOverlayElement.classList.remove('hidden');
   body.classList.add('modal-open');
+
+  resetEffects();
 };
 
 uploadFileInputElement.addEventListener('change', () => {
