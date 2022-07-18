@@ -4,9 +4,6 @@ const scaleInputElement = document.querySelector('.scale__control--value');
 const imgPrewewElement = document.querySelector('.img-upload__preview img');
 
 
-//scaleInputElement.value = '100%';
-
-
 const scaleMin = () => {
   let scale = parseInt(scaleInputElement.value, 10);
   if (scale > 25) {

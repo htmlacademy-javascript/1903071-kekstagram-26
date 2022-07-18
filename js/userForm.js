@@ -1,5 +1,5 @@
 import {isEscapeKey} from './util.js';
-import {inputHashtagElement, commentElement, formElement} from './validationForm.js';
+import {inputHashtagElement, commentElement, formElement, pristine} from './validationForm.js';
 import {resetEffects} from './effects.js';
 import {scaleInputElement, imgPrewewElement} from './scale.js';
 
@@ -44,10 +44,11 @@ uploadFileInputElement.addEventListener('change', () => {
 const closeImgUploadOverlay = () => {
   imgUploadOverlayElement.classList.add('hidden');
   body.classList.remove('modal-open');
+  document.removeEventListener('keydown', onImgUploadOverlayEscKeydown);
 
   formElement.reset();
-  document.removeEventListener('keydown', onImgUploadOverlayEscKeydown);
   resetEffects();
+  pristine.reset();
 };
 
 buttonClose.addEventListener('click', closeImgUploadOverlay);
