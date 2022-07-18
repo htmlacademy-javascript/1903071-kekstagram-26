@@ -1,6 +1,7 @@
 import {isEscapeKey} from './util.js';
 import {inputHashtagElement, commentElement, formElement} from './validationForm.js';
 import {resetEffects} from './effects.js';
+import {scaleInputElement, imgPrewewElement} from './scale.js';
 
 const uploadFileInputElement = document.querySelector('#upload-file');
 const imgUploadOverlayElement = document.querySelector('.img-upload__overlay');
@@ -31,7 +32,8 @@ const openImgUploadOverlay = () => {
   imgUploadOverlayElement.classList.remove('hidden');
   body.classList.add('modal-open');
 
-  resetEffects();
+  scaleInputElement.value = '100%';
+  imgPrewewElement.style = 'transform: scale(1)';
 };
 
 uploadFileInputElement.addEventListener('change', () => {
@@ -45,10 +47,9 @@ const closeImgUploadOverlay = () => {
 
   formElement.reset();
   document.removeEventListener('keydown', onImgUploadOverlayEscKeydown);
+  resetEffects();
 };
 
-buttonClose.addEventListener('click', () => {
-  closeImgUploadOverlay();
-});
+buttonClose.addEventListener('click', closeImgUploadOverlay);
 
 

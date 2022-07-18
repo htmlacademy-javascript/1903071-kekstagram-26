@@ -61,6 +61,8 @@ const effects = [
   },
 ];
 
+sliderElement.classList.add('hidden');
+
 const defaultEffect = effects[0];
 
 let chosenEffect = defaultEffect;

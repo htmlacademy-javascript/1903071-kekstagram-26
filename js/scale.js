@@ -4,7 +4,7 @@ const scaleInputElement = document.querySelector('.scale__control--value');
 const imgPrewewElement = document.querySelector('.img-upload__preview img');
 
 
-scaleInputElement.value = '100%';
+//scaleInputElement.value = '100%';
 
 
 const scaleMin = () => {
@@ -26,10 +26,9 @@ const scaleMax = () => {
   }
 };
 
-const addScaleHandler = () => {
-  minusButtonElement.addEventListener('click', scaleMin);
-  plusButtonElement.addEventListener('click', scaleMax);
-};
-addScaleHandler();
 
-export {imgPrewewElement};
+minusButtonElement.addEventListener('click', scaleMin);
+plusButtonElement.addEventListener('click', scaleMax);
+
+
+export {imgPrewewElement, scaleInputElement};
