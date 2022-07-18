@@ -4,3 +4,5 @@ import './usersPhoto.js';
 import './bigPhoto.js';
 import './userForm.js';
 import './validationForm.js';
+import './scale.js';
+import './effects.js';
