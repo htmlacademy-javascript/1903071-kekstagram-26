@@ -8,13 +8,6 @@ const pictureTemplate = document.querySelector('#picture').content.querySelector
 const renderPhotos = (pictureItems) => {
   const picturesFragment = document.createDocumentFragment();
 
-  /*picturesElements.addEventListener('click', (evt) => {
-    if (evt.target.tagName === 'IMG') {
-      console.log(evt.target.id);
-      showBigPicture(evt.target.id);
-    }
-  });*/
-
   pictureItems.forEach(({url, likes, comments, description}) => {
     const pictureItem = pictureTemplate.cloneNode(true);
     pictureItem.querySelector('.picture__img').src = url;

@@ -1,6 +1,6 @@
 import {checkCommentLength } from './util.js';
 import {sendData} from './api.js';
-import {openSuccessMessage, openErrorMessage} from './userForm.js';
+import {openSuccessMessage, openErrorMessage} from './conditionSending.js';
 
 const formElement = document.querySelector('#upload-select-image');
 const inputHashtagElement = document.querySelector('.text__hashtags');
