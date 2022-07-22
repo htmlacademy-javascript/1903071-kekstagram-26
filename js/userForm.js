@@ -97,7 +97,6 @@ function closeSuccessMessage() {
 const onNotErrorMessageElement = (evt) => {
   if(evt.target === errorMessageElement) {
     closeErrorMessage();
-    closeImgUploadOverlay();
   }
 };
 
