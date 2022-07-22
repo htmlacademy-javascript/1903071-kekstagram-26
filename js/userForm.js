@@ -69,7 +69,6 @@ const onDocumentEscKeydown = (evt) => {
     evt.preventDefault();
     closeSuccessMessage();
     closeErrorMessage();
-    closeImgUploadOverlay();
   }
 };
 
@@ -99,6 +98,7 @@ const onNotErrorMessageElement = (evt) => {
     closeErrorMessage();
   }
 };
+
 
 const openErrorMessage = () => {
   document.body.append(errorMessageElement);
