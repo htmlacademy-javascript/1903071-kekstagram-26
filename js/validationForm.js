@@ -1,4 +1,6 @@
-import {checkCommentLength} from './util.js';
+import {checkCommentLength } from './util.js';
+import {sendData} from './api.js';
+import {openSuccessMessage, openErrorMessage} from './conditionSending.js';
 
 const formElement = document.querySelector('#upload-select-image');
 const inputHashtagElement = document.querySelector('.text__hashtags');
@@ -48,13 +50,15 @@ pristine.addValidator(inputHashtagElement, (value) => testUnique(splitString(val
 
 pristine.addValidator(commentElement, (value) => checkCommentLength(value, 140), 'Не более 140 символов');
 
-
 formElement.addEventListener('submit', (evt) => {
+  evt.preventDefault();
   const isValid = pristine.validate();
   if (isValid) {
-    formElement.submit();
-  } else {
-    evt.preventDefault();
+    sendData(
+      openSuccessMessage,
+      openErrorMessage,
+      new FormData(evt.target),
+    );
   }
 });
 
