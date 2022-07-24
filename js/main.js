@@ -7,6 +7,7 @@ import './effects.js';
 import {getData} from './api.js';
 import './messages.js';
 import {setFilters} from './filter.js';
+import './postPhoto.js';
 
 getData((photos) => {
   renderPhotos(photos);

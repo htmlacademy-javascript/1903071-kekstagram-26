@@ -54,4 +54,4 @@ const closeImgUploadOverlay = () => {
 buttonClose.addEventListener('click', closeImgUploadOverlay);
 
 
-export {openImgUploadOverlay, closeImgUploadOverlay, imgUploadOverlayElement};
+export {openImgUploadOverlay, closeImgUploadOverlay, imgUploadOverlayElement, uploadFileInputElement};
