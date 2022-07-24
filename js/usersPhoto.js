@@ -1,9 +1,7 @@
 import {showBigPicture} from './bigPhoto.js';
 
-
 const picturesElements = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
-
 
 const renderPhotos = (pictureItems) => {
   const picturesFragment = document.createDocumentFragment();
@@ -19,6 +17,7 @@ const renderPhotos = (pictureItems) => {
       showBigPicture({url, likes, comments, description});
     });
   });
+
   picturesElements.append(picturesFragment);
 };
 

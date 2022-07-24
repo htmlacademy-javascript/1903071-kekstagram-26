@@ -1,4 +1,4 @@
-import {getRandomNumber, getRandomArrayElement} from './util.js';
+/*import {getRandomNumber, getRandomArrayElement} from './util.js';
 
 const messagesInComments = [
   'Всё отлично!',
@@ -71,4 +71,4 @@ const createPhotoDescription = () => {
 };
 
 
-export {createPhotoDescription};
+export {createPhotoDescription};*/

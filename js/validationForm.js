@@ -1,6 +1,6 @@
 import {checkCommentLength } from './util.js';
 import {sendData} from './api.js';
-import {openSuccessMessage, openErrorMessage} from './conditionSending.js';
+import {openSuccessMessage, openErrorMessage} from './messages.js';
 
 const formElement = document.querySelector('#upload-select-image');
 const inputHashtagElement = document.querySelector('.text__hashtags');
@@ -11,7 +11,6 @@ const pristine = new Pristine(formElement, {
   errorTextParent: 'img-upload__field-wrapper',
   errorTextClass: 'img-upload__text-error',
 });
-
 
 const splitString = (value) => value.toLowerCase().split(' ');
 
@@ -46,7 +45,6 @@ const testUnique = (value) => {
 };
 
 pristine.addValidator(inputHashtagElement, (value) => testUnique(splitString(value)), 'Один и тот же хэш-тег не может быть использован дважды');
-
 
 pristine.addValidator(commentElement, (value) => checkCommentLength(value, 140), 'Не более 140 символов');
 
