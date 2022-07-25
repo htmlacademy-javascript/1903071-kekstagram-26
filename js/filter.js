@@ -11,22 +11,22 @@ const filtersButtonsElements = document.querySelectorAll('.img-filters__button')
 const comparePhotos = (photoA, photoB) => photoB.comments.length - photoA.comments.length;
 
 const getFilteredArrPhotos = (photos, currentFilter) => {
-  let filteredArrPhotos = [];
   if (currentFilter === defaultFilterElement) {
     defaultFilterElement.classList.add('img-filters__button--active');
-    filteredArrPhotos = photos.slice();
+    return photos.slice();
   }
   if (currentFilter === randomFilterElement) {
     randomFilterElement.classList.add('img-filters__button--active');
+    const filteredArrPhotos = [];
     for (let i = 0; i < 10; i++) {
       filteredArrPhotos.push(getRandomArrayElement(photos));
     }
+    return filteredArrPhotos;
   }
   if (currentFilter === discussedFilterElement) {
     discussedFilterElement.classList.add('img-filters__button--active');
-    filteredArrPhotos = photos.slice().sort(comparePhotos);
+    return photos.slice().sort(comparePhotos);
   }
-  return filteredArrPhotos;
 };
 
 const setFilters = (photos) => {
