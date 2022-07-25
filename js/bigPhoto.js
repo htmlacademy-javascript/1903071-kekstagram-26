@@ -1,4 +1,5 @@
 import {isEscapeKey} from './util.js';
+import {AMOUNT_UPLOAD_COMMENTS} from './magic.js';
 
 const bigPictureElement = document.querySelector('.big-picture');
 const bigPicturePhotoElement = document.querySelector('.big-picture__img img');
@@ -52,10 +53,10 @@ const showBigPicture = (photo) => {
 
   const comments = photo.comments;
   let start = 0;
-  let end = 5;
+  let end = AMOUNT_UPLOAD_COMMENTS;
   comments.slice(start, end).forEach(renderComment);
 
-  if (comments.length <= 5) {
+  if (comments.length <= AMOUNT_UPLOAD_COMMENTS) {
     commentsLoaderElement.classList.add('hidden');
     loadCommentCountElement.textContent = `${comments.length  } из ${  comments.length} комментариев`;
   } else {
@@ -64,7 +65,7 @@ const showBigPicture = (photo) => {
   }
 
   const generateComments = () => {
-    comments.slice(start += 5, end += 5).forEach(renderComment);
+    comments.slice(start += AMOUNT_UPLOAD_COMMENTS, end += AMOUNT_UPLOAD_COMMENTS).forEach(renderComment);
     if (end >= comments.length) {
       commentsLoaderElement.classList.add('hidden');
       end = comments.length;

@@ -2,6 +2,7 @@ import {isEscapeKey} from './util.js';
 import {inputHashtagElement, commentElement, formElement, pristine} from './validationForm.js';
 import {resetEffects} from './effects.js';
 import {scaleInputElement, imgPrewewElement} from './scale.js';
+import {SCALE_MAX} from './magic.js';
 
 const uploadFileInputElement = document.querySelector('#upload-file');
 const imgUploadOverlayElement = document.querySelector('.img-upload__overlay');
@@ -32,7 +33,7 @@ const openImgUploadOverlay = () => {
   imgUploadOverlayElement.classList.remove('hidden');
   body.classList.add('modal-open');
 
-  scaleInputElement.value = '100%';
+  scaleInputElement.value = `${SCALE_MAX}%`;
   imgPrewewElement.style = 'transform: scale(1)';
 };
 

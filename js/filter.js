@@ -1,5 +1,6 @@
 import {renderPhotos} from './usersPhoto.js';
 import {getRandomArrayElement, debounce} from './util.js';
+import {AMOUNT_RANDOM_PHOTOS, RERENDER_DELAY} from './magic.js';
 
 const filtersElement = document.querySelector('.img-filters');
 const defaultFilterElement = document.querySelector('#filter-default');
@@ -18,7 +19,7 @@ const getFilteredArrPhotos = (photos, currentFilter) => {
   if (currentFilter === randomFilterElement) {
     randomFilterElement.classList.add('img-filters__button--active');
     const filteredArrPhotos = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < AMOUNT_RANDOM_PHOTOS; i++) {
       filteredArrPhotos.push(getRandomArrayElement(photos));
     }
     return filteredArrPhotos;
@@ -47,7 +48,7 @@ const setFilters = (photos) => {
     photosElements.forEach((element) => element.remove());
 
     const filteredPhotos = getFilteredArrPhotos(photos, evt.target);
-    debounce(() => renderPhotos(filteredPhotos), 500)();
+    debounce(() => renderPhotos(filteredPhotos), RERENDER_DELAY)();
   });
 };
 

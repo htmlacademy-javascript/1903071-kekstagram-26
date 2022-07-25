@@ -1,3 +1,5 @@
+import {DELAY_ALERT_MESSAGE} from './magic.js';
+
 const getRandomNumber = (min, max) => {
   const random = min - 0.5 + Math.random() * (max - min + 1);
   return Math.round(random);
@@ -27,7 +29,7 @@ const showAlert = (message) => {
 
   setTimeout(() => {
     alertContainer.remove();
-  }, 5000);
+  }, DELAY_ALERT_MESSAGE);
 };
 
 const debounce = (callback, timeoutDelay) => {
