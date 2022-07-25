@@ -7,6 +7,13 @@ const getRandomNumber = (min, max) => {
 
 const getRandomArrayElement = (elements) => elements[getRandomNumber(0, elements.length - 1)];
 
+const shuffle = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+};
+
 const checkCommentLength = (line, maxLength) => line.length <= maxLength;
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
@@ -40,4 +47,4 @@ const debounce = (callback, timeoutDelay) => {
   };
 };
 
-export {getRandomNumber, getRandomArrayElement, isEscapeKey, checkCommentLength, showAlert, debounce};
+export {getRandomNumber, getRandomArrayElement, isEscapeKey, checkCommentLength, showAlert, shuffle, debounce};

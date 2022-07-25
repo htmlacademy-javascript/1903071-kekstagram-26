@@ -1,5 +1,5 @@
 import {renderPhotos} from './usersPhoto.js';
-import {getRandomArrayElement, debounce} from './util.js';
+import {debounce, shuffle} from './util.js';
 import {AMOUNT_RANDOM_PHOTOS, RERENDER_DELAY} from './magic.js';
 
 const filtersElement = document.querySelector('.img-filters');
@@ -14,15 +14,13 @@ const comparePhotos = (photoA, photoB) => photoB.comments.length - photoA.commen
 const getFilteredArrPhotos = (photos, currentFilter) => {
   if (currentFilter === defaultFilterElement) {
     defaultFilterElement.classList.add('img-filters__button--active');
-    return photos.slice();
+    return photos;
   }
   if (currentFilter === randomFilterElement) {
     randomFilterElement.classList.add('img-filters__button--active');
-    const filteredArrPhotos = [];
-    for (let i = 0; i < AMOUNT_RANDOM_PHOTOS; i++) {
-      filteredArrPhotos.push(getRandomArrayElement(photos));
-    }
-    return filteredArrPhotos;
+    const filteredArrPhotos = (photos.slice());
+    shuffle(filteredArrPhotos);
+    return filteredArrPhotos.slice(0, AMOUNT_RANDOM_PHOTOS);
   }
   if (currentFilter === discussedFilterElement) {
     discussedFilterElement.classList.add('img-filters__button--active');
