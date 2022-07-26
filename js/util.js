@@ -1,20 +1,22 @@
-const getRandomNumber = function (min, max) {
+import {DELAY_ALERT_MESSAGE} from './magic.js';
+
+const getRandomNumber = (min, max) => {
   const random = min - 0.5 + Math.random() * (max - min + 1);
   return Math.round(random);
 };
 
+const getRandomArrayElement = (elements) => elements[getRandomNumber(0, elements.length - 1)];
 
-const getRandomArrayElement = function(elements) {
-  return elements[getRandomNumber(0, elements.length - 1)];
+const shuffle = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
 };
-
 
 const checkCommentLength = (line, maxLength) => line.length <= maxLength;
 
-
-function isEscapeKey(evt) {
-  return evt.key === 'Escape';
-}
+const isEscapeKey = (evt) => evt.key === 'Escape';
 
 const showAlert = (message) => {
   const alertContainer = document.createElement('div');
@@ -34,7 +36,15 @@ const showAlert = (message) => {
 
   setTimeout(() => {
     alertContainer.remove();
-  }, 5000);
+  }, DELAY_ALERT_MESSAGE);
 };
 
-export {getRandomNumber, getRandomArrayElement, isEscapeKey, checkCommentLength, showAlert};
+const debounce = (callback, timeoutDelay) => {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
+export {getRandomNumber, getRandomArrayElement, isEscapeKey, checkCommentLength, showAlert, shuffle, debounce};

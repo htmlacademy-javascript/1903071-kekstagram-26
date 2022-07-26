@@ -1,6 +1,7 @@
 import {checkCommentLength } from './util.js';
 import {sendData} from './api.js';
-import {openSuccessMessage, openErrorMessage} from './conditionSending.js';
+import {openSuccessMessage, openErrorMessage} from './messages.js';
+import {AMOUNT_HASHTAGS, COMMENT_LENGTH} from './magic.js';
 
 const formElement = document.querySelector('#upload-select-image');
 const inputHashtagElement = document.querySelector('.text__hashtags');
@@ -12,12 +13,11 @@ const pristine = new Pristine(formElement, {
   errorTextClass: 'img-upload__text-error',
 });
 
-
 const splitString = (value) => value.toLowerCase().split(' ');
 
-const validateAmountHashtags = (value) => splitString(value).length <= 5;
+const validateAmountHashtags = (value) => splitString(value).length <= AMOUNT_HASHTAGS;
 
-pristine.addValidator(inputHashtagElement, validateAmountHashtags, 'Не более 5 хештегов');
+pristine.addValidator(inputHashtagElement, validateAmountHashtags, `Не более ${AMOUNT_HASHTAGS} хештегов`);
 
 
 const validateHashtag = (value) => {
@@ -47,8 +47,7 @@ const testUnique = (value) => {
 
 pristine.addValidator(inputHashtagElement, (value) => testUnique(splitString(value)), 'Один и тот же хэш-тег не может быть использован дважды');
 
-
-pristine.addValidator(commentElement, (value) => checkCommentLength(value, 140), 'Не более 140 символов');
+pristine.addValidator(commentElement, (value) => checkCommentLength(value, COMMENT_LENGTH), `Не более ${COMMENT_LENGTH} символов`);
 
 formElement.addEventListener('submit', (evt) => {
   evt.preventDefault();

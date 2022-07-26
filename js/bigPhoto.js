@@ -1,4 +1,5 @@
 import {isEscapeKey} from './util.js';
+import {AMOUNT_UPLOAD_COMMENTS} from './magic.js';
 
 const bigPictureElement = document.querySelector('.big-picture');
 const bigPicturePhotoElement = document.querySelector('.big-picture__img img');
@@ -20,17 +21,16 @@ const onBigPictureEscKeydown = (evt) => {
   }
 };
 
-const bigPictureOpen = function () {
+const bigPictureOpen = () => {
   bigPictureElement.classList.remove('hidden');
   body.classList.add('modal-open');
 };
 
-const bigPictureClose  = function () {
+const bigPictureClose = () => {
   bigPictureElement.classList.add('hidden');
   body.classList.remove('modal-open');
 
   document.removeEventListener('keydown', onBigPictureEscKeydown);
-  //document.removeEventListener('click', generateComments);
 };
 
 const renderComment = (comment) => {
@@ -43,7 +43,7 @@ const renderComment = (comment) => {
   commentsContainerElement.append(commentsListItemTemplate);
 };
 
-const showBigPicture = function (photo) {
+const showBigPicture = (photo) => {
   bigPictureOpen();
   bigPicturePhotoElement.src = photo.url;
   likesCountElement.textContent = photo.likes;
@@ -53,10 +53,10 @@ const showBigPicture = function (photo) {
 
   const comments = photo.comments;
   let start = 0;
-  let end = 5;
+  let end = AMOUNT_UPLOAD_COMMENTS;
   comments.slice(start, end).forEach(renderComment);
 
-  if (comments.length <= 5) {
+  if (comments.length <= AMOUNT_UPLOAD_COMMENTS) {
     commentsLoaderElement.classList.add('hidden');
     loadCommentCountElement.textContent = `${comments.length  } из ${  comments.length} комментариев`;
   } else {
@@ -64,15 +64,15 @@ const showBigPicture = function (photo) {
     commentsLoaderElement.classList.remove('hidden');
   }
 
-  function generateComments() {
-    comments.slice(start += 5, end += 5).forEach(renderComment);
+  const generateComments = () => {
+    comments.slice(start += AMOUNT_UPLOAD_COMMENTS, end += AMOUNT_UPLOAD_COMMENTS).forEach(renderComment);
     if (end >= comments.length) {
       commentsLoaderElement.classList.add('hidden');
       end = comments.length;
       commentsLoaderElement.removeEventListener('click', generateComments);
     }
     loadCommentCountElement.textContent = `${end  } из ${  comments.length} комментариев`;
-  }
+  };
 
   commentsLoaderElement.addEventListener('click', generateComments);
 

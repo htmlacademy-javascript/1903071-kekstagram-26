@@ -5,8 +5,10 @@ import './validationForm.js';
 import './scale.js';
 import './effects.js';
 import {getData} from './api.js';
-import './conditionSending.js';
+import './messages.js';
+import {setFilters} from './filter.js';
 
 getData((photos) => {
   renderPhotos(photos);
+  setFilters(photos);
 });
