@@ -32,7 +32,8 @@ const setFilters = (photos) => {
   filtersElement.classList.remove('img-filters--inactive');
 
   filtersElement.addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('img-filters__button--active')) {
+    if (evt.target.classList.contains('img-filters__button--active') ||
+    !evt.target.classList.contains('img-filters__button')) {
       return;
     }
 
