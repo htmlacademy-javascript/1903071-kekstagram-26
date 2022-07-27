@@ -1,4 +1,4 @@
-import {SCALE_STEP, SCALE_MIN, SCALE_MAX} from './magic.js';
+import {SCALE_STEP, SCALE_MIN, SCALE_MAX} from './variables.js';
 
 const minusButtonElement = document.querySelector('.scale__control--smaller');
 const plusButtonElement = document.querySelector('.scale__control--bigger');

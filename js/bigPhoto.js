@@ -1,5 +1,5 @@
 import {isEscapeKey} from './util.js';
-import {AMOUNT_UPLOAD_COMMENTS} from './magic.js';
+import {AMOUNT_UPLOAD_COMMENTS} from './variables.js';
 
 const bigPictureElement = document.querySelector('.big-picture');
 const bigPicturePhotoElement = document.querySelector('.big-picture__img img');
@@ -26,11 +26,12 @@ const bigPictureOpen = () => {
   body.classList.add('modal-open');
 };
 
-const bigPictureClose = () => {
+const bigPictureClose = (generateComments) => {
   bigPictureElement.classList.add('hidden');
   body.classList.remove('modal-open');
 
   document.removeEventListener('keydown', onBigPictureEscKeydown);
+  commentsLoaderElement.removeEventListener('click', generateComments);
 };
 
 const renderComment = (comment) => {
@@ -69,14 +70,13 @@ const showBigPicture = (photo) => {
     if (end >= comments.length) {
       commentsLoaderElement.classList.add('hidden');
       end = comments.length;
-      commentsLoaderElement.removeEventListener('click', generateComments);
     }
     loadCommentCountElement.textContent = `${end  } из ${  comments.length} комментариев`;
   };
 
   commentsLoaderElement.addEventListener('click', generateComments);
 
-  buttonCloseElement.addEventListener('click', bigPictureClose);
+  buttonCloseElement.addEventListener('click', () => bigPictureClose(generateComments));
 
   document.addEventListener('keydown', onBigPictureEscKeydown);
 };

@@ -1,4 +1,4 @@
-import {DELAY_ALERT_MESSAGE} from './magic.js';
+import {DELAY_ALERT_MESSAGE} from './variables.js';
 
 const getRandomNumber = (min, max) => {
   const random = min - 0.5 + Math.random() * (max - min + 1);

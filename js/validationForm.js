@@ -1,7 +1,7 @@
 import {checkCommentLength } from './util.js';
 import {sendData} from './api.js';
 import {openSuccessMessage, openErrorMessage} from './messages.js';
-import {AMOUNT_HASHTAGS, COMMENT_LENGTH} from './magic.js';
+import {AMOUNT_HASHTAGS, COMMENT_LENGTH} from './variables.js';
 
 const formElement = document.querySelector('#upload-select-image');
 const inputHashtagElement = document.querySelector('.text__hashtags');

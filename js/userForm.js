@@ -2,7 +2,7 @@ import {isEscapeKey} from './util.js';
 import {inputHashtagElement, commentElement, formElement, pristine} from './validationForm.js';
 import {resetEffects} from './effects.js';
 import {scaleInputElement, imgPrewewElement} from './scale.js';
-import {SCALE_MAX} from './magic.js';
+import {SCALE_MAX} from './variables.js';
 
 const uploadFileInputElement = document.querySelector('#upload-file');
 const imgUploadOverlayElement = document.querySelector('.img-upload__overlay');
