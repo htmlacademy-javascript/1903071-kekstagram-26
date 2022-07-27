@@ -1,6 +1,6 @@
 import {renderPhotos} from './usersPhoto.js';
 import {debounce, shuffle} from './util.js';
-import {AMOUNT_RANDOM_PHOTOS, RERENDER_DELAY} from './magic.js';
+import {AMOUNT_RANDOM_PHOTOS, RERENDER_DELAY} from './variables.js';
 
 const filtersElement = document.querySelector('.img-filters');
 const defaultFilterElement = document.querySelector('#filter-default');

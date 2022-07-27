@@ -1,5 +1,5 @@
 import {isEscapeKey} from './util.js';
-import {AMOUNT_UPLOAD_COMMENTS} from './magic.js';
+import {AMOUNT_UPLOAD_COMMENTS} from './variables.js';
 
 const bigPictureElement = document.querySelector('.big-picture');
 const bigPicturePhotoElement = document.querySelector('.big-picture__img img');
