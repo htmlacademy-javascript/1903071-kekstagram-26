@@ -1,5 +1,5 @@
 import {showAlert} from './util.js';
-import {closeImgUploadOverlay} from './userForm.js';
+import {closeImgUploadOverlay} from './user-form.js';
 
 const getData = (onSuccess) => {
   fetch('https://26.javascript.pages.academy/kekstagram/data')

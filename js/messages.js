@@ -1,5 +1,5 @@
 import {isEscapeKey} from './util.js';
-import {imgUploadOverlayElement} from './userForm.js';
+import {imgUploadOverlayElement} from './user-form.js';
 
 const successTemplate = document.querySelector('#success').content.querySelector('.success');
 const successMessageElement = successTemplate.cloneNode(true);

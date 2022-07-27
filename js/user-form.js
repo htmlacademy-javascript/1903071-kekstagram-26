@@ -1,5 +1,5 @@
 import {isEscapeKey} from './util.js';
-import {inputHashtagElement, commentElement, formElement, pristine} from './validationForm.js';
+import {inputHashtagElement, commentElement, formElement, pristine} from './validation-form.js';
 import {resetEffects} from './effects.js';
 import {scaleInputElement, imgPrewewElement} from './scale.js';
 import {SCALE_MAX} from './variables.js';
