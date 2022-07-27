@@ -26,11 +26,12 @@ const bigPictureOpen = () => {
   body.classList.add('modal-open');
 };
 
-const bigPictureClose = () => {
+const bigPictureClose = (generateComments) => {
   bigPictureElement.classList.add('hidden');
   body.classList.remove('modal-open');
 
   document.removeEventListener('keydown', onBigPictureEscKeydown);
+  commentsLoaderElement.removeEventListener('click', generateComments);
 };
 
 const renderComment = (comment) => {
@@ -64,19 +65,18 @@ const showBigPicture = (photo) => {
     commentsLoaderElement.classList.remove('hidden');
   }
 
-  const generateComments = () => {
+  function generateComments () {
     comments.slice(start += AMOUNT_UPLOAD_COMMENTS, end += AMOUNT_UPLOAD_COMMENTS).forEach(renderComment);
     if (end >= comments.length) {
       commentsLoaderElement.classList.add('hidden');
       end = comments.length;
-      commentsLoaderElement.removeEventListener('click', generateComments);
     }
     loadCommentCountElement.textContent = `${end  } из ${  comments.length} комментариев`;
-  };
+  }
 
   commentsLoaderElement.addEventListener('click', generateComments);
 
-  buttonCloseElement.addEventListener('click', bigPictureClose);
+  buttonCloseElement.addEventListener('click', () => bigPictureClose(generateComments));
 
   document.addEventListener('keydown', onBigPictureEscKeydown);
 };
