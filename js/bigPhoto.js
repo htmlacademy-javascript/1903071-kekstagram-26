@@ -65,14 +65,14 @@ const showBigPicture = (photo) => {
     commentsLoaderElement.classList.remove('hidden');
   }
 
-  function generateComments () {
+  const generateComments = () => {
     comments.slice(start += AMOUNT_UPLOAD_COMMENTS, end += AMOUNT_UPLOAD_COMMENTS).forEach(renderComment);
     if (end >= comments.length) {
       commentsLoaderElement.classList.add('hidden');
       end = comments.length;
     }
     loadCommentCountElement.textContent = `${end  } из ${  comments.length} комментариев`;
-  }
+  };
 
   commentsLoaderElement.addEventListener('click', generateComments);
 
