@@ -21,12 +21,12 @@ const onBigPictureEscKeydown = (evt) => {
   }
 };
 
-const bigPictureOpen = () => {
+const openBigPicture = () => {
   bigPictureElement.classList.remove('hidden');
   body.classList.add('modal-open');
 };
 
-const bigPictureClose = (generateComments) => {
+const closeBigPicture = (generateComments) => {
   bigPictureElement.classList.add('hidden');
   body.classList.remove('modal-open');
 
@@ -45,7 +45,7 @@ const renderComment = (comment) => {
 };
 
 const showBigPicture = (photo) => {
-  bigPictureOpen();
+  openBigPicture();
   bigPicturePhotoElement.src = photo.url;
   likesCountElement.textContent = photo.likes;
   commentCountElement.textContent = photo.comments.length;
@@ -66,7 +66,9 @@ const showBigPicture = (photo) => {
   }
 
   const generateComments = () => {
-    comments.slice(start += AMOUNT_UPLOAD_COMMENTS, end += AMOUNT_UPLOAD_COMMENTS).forEach(renderComment);
+    const newStart = start += AMOUNT_UPLOAD_COMMENTS;
+    const newEnd = end += AMOUNT_UPLOAD_COMMENTS;
+    comments.slice(newStart, newEnd).forEach(renderComment);
     if (end >= comments.length) {
       commentsLoaderElement.classList.add('hidden');
       end = comments.length;
@@ -76,7 +78,7 @@ const showBigPicture = (photo) => {
 
   commentsLoaderElement.addEventListener('click', generateComments);
 
-  buttonCloseElement.addEventListener('click', () => bigPictureClose(generateComments));
+  buttonCloseElement.addEventListener('click', () => closeBigPicture(generateComments));
 
   document.addEventListener('keydown', onBigPictureEscKeydown);
 };

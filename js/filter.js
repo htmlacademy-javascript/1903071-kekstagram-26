@@ -1,4 +1,4 @@
-import {renderPhotos} from './usersPhoto.js';
+import {renderPhotos} from './users-photo.js';
 import {debounce, shuffle} from './util.js';
 import {AMOUNT_RANDOM_PHOTOS, RERENDER_DELAY} from './variables.js';
 
